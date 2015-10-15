@@ -39,20 +39,20 @@ public class LoginServlet extends HttpServlet {
 		String username = (String) request.getParameter("user");
 		String password = (String) request.getParameter("password");
 
-		if (!checkUserInput(username) || !checkUserInput(password)) {
-			response.sendRedirect("/AuctionProject/Login.jsp");
-		}
-
-		else {
-			if (checkLogin(username, password)) {
-				Cookie loginCookie = new Cookie("user", username);
-				loginCookie.setMaxAge(30 * 60);
-				response.addCookie(loginCookie);
-				response.sendRedirect("/AuctionProject/index.jsp");
-			} else {
-				response.sendRedirect("/AuctionProject/Login.jsp");
-			}
-		}
+//		if (!checkUserInput(username) || !checkUserInput(password)) {
+//			response.sendRedirect("/AuctionProject/Login.jsp");
+//		}
+//
+//		else {
+//			if (checkLogin(username, password)) {
+//				Cookie loginCookie = new Cookie("user", username);
+//				loginCookie.setMaxAge(30 * 60);
+//				response.addCookie(loginCookie);
+//				response.sendRedirect("/AuctionProject/index.jsp");
+//			} else {
+//				response.sendRedirect("/AuctionProject/Login.jsp");
+//			}
+//		}
 	}
 
 	private boolean checkLogin(String username, String password) {

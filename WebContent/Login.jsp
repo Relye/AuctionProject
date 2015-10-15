@@ -7,8 +7,11 @@
 <title>Auction-Login</title>
 <script type="text/javascript">
 	function runScript(form) {
-		enabledCookies();
-		checkField(form);
+		var eC = enabledCookies();
+		var cF = checkField(form);
+		if(eC==false || cF==false) {
+			return false;
+		}
 	}
 
 	function enabledCookies() {
@@ -25,8 +28,15 @@
 		if (form.user.value == "") {
 			alert("Field 'Username' is empty");
 			return false;
-		} else if (form.pwrd.value == "") {
+		} else if (form.password.value == "") {
 			alert("Field 'Password' is empty");
+			return false;
+		} else if (form.user.value.length>20) {
+			alert("Field 'Username' contains too many chars!");
+
+			return false;
+		} else if (form.password.value.length>20) {
+			alert("Field 'Password' contains too many chars!");
 			return false;
 		}
 		return true;
@@ -34,10 +44,10 @@
 </script>
 </head>
 <body>
-	<form name="login" action="LoginServlet" method="post" onsubmit="runScript(this)">
+	<form name="login" action="LoginServlet" method="post" onsubmit="return runScript(this)">
 		Username: <input type="text" name="user"> <br> Password:
 		<input type="password" name="password"> <br> <input
-			type="submit" value="Login" name="button">
+			type="submit" value="submit" name="button">
 	</form>
 </body>
 </html>
